@@ -8,17 +8,12 @@ import { useState } from 'react'
 
 
 const InputTask = () => {
-  // const [arrayDeObjetos, setArrayDeObjetos] = useState(tasks);
-
+ 
   function addTask(){
-    // console.log(tasks[0]);
-    // tasks={'id':5, 'task':'Juego fubol'}
-     const nuevoObjeto = {'id':5, 'task':'Juego fubol'}
-    const nuevoTask=[...tasks,nuevoObjeto];
-    
+   const nuevaTarea = {'id':65, 'task':'Juego fubol'}
+    const nuevoTask=[...tasks,nuevaTarea];
     nuevoTask.map(t=>console.log(t))
   } 
-
 
   return (
     <Flex flexDirection='row' >
