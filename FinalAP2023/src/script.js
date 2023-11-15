@@ -1,0 +1,1 @@
+export const tasks=[{'id':1,'task':'tarea41'},{'id':2,'task':'tarea2'}]
