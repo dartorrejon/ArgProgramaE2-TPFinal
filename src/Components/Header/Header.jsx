@@ -4,11 +4,13 @@ import logo from "/resourse/faire.png?url";
 import {Search2Icon} from '@chakra-ui/icons'
 const Header = () => {
   return (
-    <Heading  display='flex' flexDirection='row' mt='5px' >
-      <Image src={logo}  />
-      <Search2Icon  boxSize={6} color='blue.400' alignItems='center'/>
-      
-    </Heading>
+    <Heading as="nav"  display='flex' mt='5px' justifyContent="space-between">
+
+      <Box></Box>
+      <Image src={logo} width="110px"/>
+      <Search2Icon  boxSize="25px" color='grey' mt="5px"/>
+
+     </Heading>
   );
 };
 
