@@ -26,8 +26,15 @@ const InputTask = () => {
 
   return (
     <Flex flexDirection="row">
-      <InputGroup>
-        <Input type="text" placeholder="Add a task" />
+     <InputGroup width="100%">
+
+     <Input
+          type="text"
+          placeholder="Add a task"
+          borderRadius="0"
+          height="45px"
+        />
+
         <InputRightElement>
           <Link>
           <Image onClick={addTask} src={plus} h="25px" w="25px" alignSelf="center" ml="5px" />

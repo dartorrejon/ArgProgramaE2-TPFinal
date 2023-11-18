@@ -6,7 +6,7 @@ import { tasks } from '../../script'
 const ListaTarea = () => {
     
     return (
-    <Flex minH='70vh' boxShadow="lg" transition="box-shadow 0.3s ease-in-out" flexDirection='column'>
+    <Flex minH='70vh' flexDirection='column'>
         {tasks.map(task=><Tarea key={task.id} tarea={task.task} ></Tarea>)}
         
     </Flex>

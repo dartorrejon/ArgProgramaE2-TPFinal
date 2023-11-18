@@ -6,8 +6,15 @@ const Tarea = ({tarea}) => {
     console.log(tarea);
   return (
     <Flex flexDirection="row">
-      <InputGroup>
-        <Input type="text" placeholder={tarea} readOnly={true} fontWeight='bold'/>
+         <InputGroup width="100%">
+        <Input
+          type="text"
+          placeholder={tarea}
+          readOnly={true}
+          fontWeight='medium'
+          borderRadius="0" 
+          height="45px"
+        />
         <InputRightElement w='60px'>
           <Link >
           <DeleteIcon boxSize='20px' mr='2px' color='grey'/>
