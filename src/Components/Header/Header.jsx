@@ -7,7 +7,7 @@ const Header = () => {
     <Heading as="nav"
      display='flex' 
      justifyContent="space-between"
-     minH="6vh"
+     minH="8vh"
      alignItems="center"
      >
     
@@ -15,7 +15,7 @@ const Header = () => {
       <Box></Box>
 
       <Box>
-        <Image src={logo} width="110px"/>
+        <Image src={logo} width="125px"/>
         </Box>
 
       <Box>

@@ -14,6 +14,7 @@ const Tarea = ({tarea}) => {
           fontWeight='medium'
           borderRadius="0" 
           height="45px"
+          borderTop="none"
         />
         <InputRightElement w='60px'>
           <Link >
