@@ -1,6 +1,8 @@
 import { SpinnerIcon, DeleteIcon } from '@chakra-ui/icons';
 import { Box, Flex, Image, Input, InputGroup, InputRightElement, Link } from '@chakra-ui/react';
 import React from 'react'
+import { PiCircleLight } from "react-icons/pi";
+
 
 const Tarea = ({tarea}) => {
     console.log(tarea);
@@ -13,14 +15,21 @@ const Tarea = ({tarea}) => {
           readOnly={true}
           fontWeight='medium'
           borderRadius="0" 
-          height="45px"
+          height="50px"
           borderTop="none"
+          _focus={{
+            borderColor: 'gray.300',
+              }}
+          
         />
         <InputRightElement w='60px'>
-          <Link >
-          <DeleteIcon boxSize='20px' mr='2px' color='grey'/>
-          <SpinnerIcon boxSize='20px' ml='2px'  color='grey' />
-          </Link>
+          <Box>
+          <DeleteIcon boxSize='20px' mr='3px' color='grey'/>
+          </Box>
+          <Box color="blue.400" mr="15px">
+          <PiCircleLight size="28px" strokeWidth={5} />
+          </Box>
+          
        </InputRightElement>
       </InputGroup>
     </Flex>

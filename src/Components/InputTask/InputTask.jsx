@@ -32,12 +32,13 @@ const InputTask = () => {
           type="text"
           placeholder="Add a task"
           borderRadius="0"
-          height="45px"
+          height="50px"
+          alignItems="center"
         />
 
         <InputRightElement>
           <Link>
-          <Image onClick={addTask} src={plus} h="25px" w="25px" alignSelf="center" ml="5px" />
+          <Image onClick={addTask} src={plus} h="25px" w="25px" alignSelf="center" mr="15px" />
           </Link>
           {/* <Button onClick={addTask} bg="none">
             <AddIcon
