@@ -1,41 +1,47 @@
-import { Box, Container, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import Header from "./Components/Header/Header";
-import InputTask from "./Components/InputTask/InputTask";
-import ListaTarea from "./Components/ListaTarea/ListaTarea";
-import Filtro from "./Components/Filtro/Filtro";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
+import Header from "../Components/Header/Header";
+import TodoInput from "../Components/TodoInput/TodoInput";
+import TodoList from "../Components/TodoList/TodoList";
+import Todo from "../Components/Todo/Todo";
+import TodoFilters from "../Components/Filtro/TodoFilters";
 
 function App() {
-const [listado,setListado]=useState([])
-  useEffect(()=>{
-    const cargarDatos=async()=>{
-      const response=await fetch("json/tareas.json")
-      const data = await response.json()
-      // console.log(data);
-      setListado(data);
-    }
-    cargarDatos()
-  },
-  [listado])
-  
+  const [todos, setTodos] = useState([
+    { id: 1, task: "Hacer la comida", state:false },
+    { id: 2, task: "Programar trabajo final", state:false  },
+    { id: 3, task: "Hacer los cuestionarios", state:false  },
+    { id: 4, task: "Terminar trabajo 7", state:false  }
+  ]);
 
+  const addTodo=(task)=>{
+    const ultimaTarea= todos.length>0?todos[todos.length-1].id:1;
+    const newTask = {
+      id:ultimaTarea+1,
+      task:task,
+      state:false
+    }
+    const todoList = [...todos];
+    todoList.push(newTask);
+    setTodos(todoList)
+  }
 
   return (
-    <Box w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
-    <Container
-    width="500px"
-    bg="white"
-    padding="0"
-    borderRadius="2px"
-    boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-    transition="box-shadow 0.3s ease-in-out">
-        <Header></Header>
-        <InputTask tasks={listado}></InputTask>
-        {/* <ListaTarea tasks={listado}></ListaTarea> */}
-        {/* <Filtro></Filtro> */}
-      
-    </Container>
+    <Box  w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
+      <Container
+        width="500px"
+        bg="white"
+        padding="0"
+        borderRadius="2px"
+        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
+        transition="box-shadow 0.3s ease-in-out"
+      >
+        <Header />
+        <TodoInput addTodo={addTodo}/>
+        <TodoList todos={todos}/>
+               
+        <TodoFilters />
+      </Container>
     </Box>
   );
 }

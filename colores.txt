@@ -1,0 +1,8 @@
+negro:#151515,
+gris:#A3A2A2,
+gris_oscuro:#555555
+celestito:#99bbd9
+azul:#11539a
+azul oscuro:#153d67
+azul_gris:#6494c2
+

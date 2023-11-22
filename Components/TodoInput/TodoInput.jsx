@@ -1,32 +1,48 @@
 import { Flex, Input, Text,Image, InputGroup, InputRightAddon} from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-// import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import plus from "/resourse/plus.jpg?url";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-import ListaTarea from "../ListaTarea/ListaTarea";
 
-const InputTask = ({tasks}) => {
+const TodoInput = ({addTodo}) => {
   
-  const [listaT,setListaT]=useState([])
+  // const [listaT,setListaT]=useState([])
 
-  function addTask() {
-    let nuevaTarea = { id: listaT.length+1, task: tarea,estado:false };
-    // tasks.push(nuevaTarea)
+  // function addTask() {
+  //   let nuevaTarea = { id: listaT.length+1, task: tarea,estado:false };
+  //   // tasks.push(nuevaTarea)
    
-    // nuevoTask.map((t) => console.log(t));
-    // console.log(tasks);
-    setListaT(Tasks=>[...Tasks,nuevaTarea]);
-    setTarea('')
+  //   // nuevoTask.map((t) => console.log(t));
+  //   // console.log(tasks);
+  //   setListaT(Tasks=>[...Tasks,nuevaTarea]);
+  //   setTarea('')
     
-  }
+  // }
 
-  const [tarea,setTarea]=useState('')
+  const [tarea,setTarea]=useState('');
+
   function cargarTarea(e){
       setTarea(e.target.value)
   }
+  const addTask=(e)=>{
+    
+    if(e.key.toLowerCase()=='enter'){
+      addTodo(tarea);
+      setTarea('');
+      console.log(tarea);
+    }
+  }
+  const addTaskClick=(e)=>{
+       
+      addTodo(tarea);
+      setTarea('');
+      console.log(tarea);
+   
+  }
+
+
   return (
     <>
     <Flex flexDirection="row">
@@ -38,11 +54,13 @@ const InputTask = ({tasks}) => {
           height="50px"
           onChange={cargarTarea}
           value={tarea}
+          onKeyDown={addTask}
         />
         <InputRightAddon h="50px" bg="white" borderRadius="0px">
           <Flex alignItems="center" bg="white">
             <Image
-              onClick={addTask}
+              onClick={addTaskClick}
+             
               src={plus}
               h="25px"
               w="25px"
@@ -64,9 +82,9 @@ const InputTask = ({tasks}) => {
         </InputRightAddon>
       </InputGroup>
     </Flex>
-     <ListaTarea tasks={listaT}/>
+   
   </>
   );
 };
 
-export default InputTask;
+export default TodoInput;
