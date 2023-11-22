@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
-import Header from "../Components/Header/Header";
-import TodoInput from "../Components/TodoInput/TodoInput";
-import TodoList from "../Components/TodoList/TodoList";
-import Todo from "../Components/Todo/Todo";
-import TodoFilters from "../Components/Filtro/TodoFilters";
+import Header from "./Components/Header/Header";
+import TodoInput from "./Components/TodoInput/TodoInput";
+import TodoList from "./Components/TodoList/TodoList";
+import Todo from "./Components/Todo/Todo";
+import TodoFilters from "./Components/Filtro/TodoFilters";
 
 function App() {
   const [todos, setTodos] = useState([
