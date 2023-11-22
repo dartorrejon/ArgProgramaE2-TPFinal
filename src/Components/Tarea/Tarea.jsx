@@ -5,7 +5,7 @@ import { PiCircleLight } from "react-icons/pi";
 
 
 const Tarea = ({tarea}) => {
-    console.log(tarea);
+    
   return (
     <Flex flexDirection="row">
          <InputGroup width="100%">
