@@ -6,21 +6,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 
-const TodoInput = ({addTodo}) => {
+const TodoInput = ({addTodo,habilitarBusqueda={habilitarBusqueda}}) => {
   
-  // const [listaT,setListaT]=useState([])
-
-  // function addTask() {
-  //   let nuevaTarea = { id: listaT.length+1, task: tarea,estado:false };
-  //   // tasks.push(nuevaTarea)
-   
-  //   // nuevoTask.map((t) => console.log(t));
-  //   // console.log(tasks);
-  //   setListaT(Tasks=>[...Tasks,nuevaTarea]);
-  //   setTarea('')
-    
-  // }
-
   const [tarea,setTarea]=useState('');
 
   function cargarTarea(e){
@@ -29,17 +16,23 @@ const TodoInput = ({addTodo}) => {
   const addTask=(e)=>{
     
     if(e.key.toLowerCase()=='enter'){
+      if(tarea==''){
+        console.log("El campo task no puede estar vacio");
+        return 
+      } 
       addTodo(tarea);
       setTarea('');
       console.log(tarea);
     }
   }
   const addTaskClick=(e)=>{
-       
+      if(tarea==''){
+        console.log("El campo task no puede estar vacio");
+        return 
+      } 
       addTodo(tarea);
       setTarea('');
-      console.log(tarea);
-   
+     
   }
 
 
@@ -53,14 +46,15 @@ const TodoInput = ({addTodo}) => {
           borderRadius="0"
           height="50px"
           onChange={cargarTarea}
+          onBlur={()=>habilitarBusqueda(tarea)}
           value={tarea}
-          onKeyDown={addTask}
+          onKeyDown={ addTask}
         />
         <InputRightAddon h="50px" bg="white" borderRadius="0px">
           <Flex alignItems="center" bg="white">
             <Image
               onClick={addTaskClick}
-             
+              
               src={plus}
               h="25px"
               w="25px"
@@ -68,7 +62,7 @@ const TodoInput = ({addTodo}) => {
               mr="2"
             />
             <Text
-              onClick={addTask}
+              onClick={addTaskClick}
               color="gray"
               fontWeight="semibold"
               fontSize="18px"

@@ -4,19 +4,8 @@ import React, { useState } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { PiCircleLight } from "react-icons/pi";
 
-const Todo = ({tarea}) => {
-    const [estado,setEstado]=useState(false)
-    const cambiarEstado=()=>{
-        estado?setEstado(false):setEstado(true);
-        // tarea.estado?tarea.estado=false:tarea.estado=true;
-        
-    }
-    const eliminarElemento=(id)=>{
-       
-        console.log(typeof(tarea));
-       console.log(tarea.indexOf(id));
-       
-    }
+const Todo = ({tarea, handleSetComplete, handleDelTask,habilitarBusqueda}) => {
+  
 
   return (
     <Flex flexDirection="row">
@@ -30,18 +19,19 @@ const Todo = ({tarea}) => {
           height="50px"
           borderTop="none"
           value={tarea.task}
-          textDecor={estado?'line-through':'none'}
+          textDecor={tarea.state?'line-through':'none'}
+          onBlur={()=>habilitarBusqueda(tarea.task)}
           _focus={{
             borderColor: "gray.300",
           }}
         />
         <InputRightElement w="60px">
           <Box>
-            <DeleteIcon boxSize="20px" mr="3px" color="grey" onClick={()=>eliminarElemento(tarea.id)}/>
+            <DeleteIcon boxSize="20px" mr="3px" color="grey" onClick={()=>handleDelTask(tarea.id)}/>
           </Box>
           <Box color="blue.400" mr="15px">
-            {!estado ? <PiCircleLight size="28px" strokeWidth={5} onClick={cambiarEstado} />:
-                estado &&<IoMdCheckmarkCircle size="28px" strokeWidth={5} onClick={cambiarEstado} />}
+            {!tarea.state ? <PiCircleLight size="28px" strokeWidth={5} onClick={()=>handleSetComplete(tarea.id)} />:
+                tarea.state &&<IoMdCheckmarkCircle size="28px" strokeWidth={5} onClick={()=>handleSetComplete(tarea.id)} />}
           </Box>
         </InputRightElement>
       </InputGroup>
