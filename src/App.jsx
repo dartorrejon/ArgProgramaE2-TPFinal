@@ -8,7 +8,7 @@ import TodoFilters from "./Components/Filtro/TodoFilters";
 import { useEffect } from "react";
 
 function App() {
-  const datos=[
+  const datos = [
     { id: 1, task: "Hacer la comida", state: false },
     { id: 2, task: "Programar trabajo final", state: false },
     { id: 3, task: "Hacer los cuestionarios", state: false },
@@ -41,22 +41,37 @@ function App() {
     setTodos(deleteList);
   };
 
+  /*************************** */
+  
+    const [buscar, setBuscar] = useState("");
+    const handlehabilitarBusqueda = (tarea) => {
+      setBuscar(tarea);
+    };
 
-  // const [buscar,setBuscar]=useState([])
-  // useEffect(() => {
-   
-  // },[buscar]);
-
-  const habilitarBusqueda=(busqueda)=>{
-    console.log(busqueda);
-    if(busqueda==''){
+    const handleBuscar = () => {
+      console.log(buscar);
+      console.log(todos);
+        if(buscar==''){
       setTodos(datos)
     }else{
-      const buscarList = todos.filter((todo) => todo.task.includes(busqueda));
+      const buscarList = todos.filter((todo) => todo.task.includes(buscar));
       setTodos(buscarList);
     }
-    
-  }
+    };
+  
+  /*************************** */
+  // },[buscar]);
+
+  // const habilitarBusqueda=(busqueda)=>{
+  //   console.log(busqueda);
+  //   if(busqueda==''){
+  //     setTodos(datos)
+  //   }else{
+  //     const buscarList = todos.filter((todo) => todo.task.includes(busqueda));
+  //     setTodos(buscarList);
+  //   }
+
+  // }
   return (
     <Box w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
       <Container
@@ -67,13 +82,12 @@ function App() {
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
         transition="box-shadow 0.3s ease-in-out"
       >
-        <Header />
-        <TodoInput addTodo={addTodo} habilitarBusqueda={habilitarBusqueda}/>
+        <Header onBuscar={handleBuscar} />
+        <TodoInput addTodo={addTodo} inputValue={buscar} onHabilitarBusqueda={handlehabilitarBusqueda} />
         <TodoList
           todos={todos}
           handleSetComplete={handleSetComplete}
           handleDelTask={handleDelTask}
-         
         />
 
         <TodoFilters />

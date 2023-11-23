@@ -6,7 +6,8 @@ import {Search2Icon} from '@chakra-ui/icons'
 
 
 
-const Header = ({handleBuscar}) => {
+
+const Header = ({onBuscar}) => {
   return (
     <Heading as="nav"
      display='flex' 
@@ -22,7 +23,15 @@ const Header = ({handleBuscar}) => {
         </Box>
 
       <Box>
-        <Search2Icon  boxSize="27px" color='grey' mt="5px" mr="15px" onClick={()=>handleBuscar} />
+        <Search2Icon  
+        boxSize="27px" 
+        color='grey' 
+        mt="5px" 
+        mr="15px" 
+        onClick={onBuscar} 
+        style={{ cursor: "pointer" }}
+        />
+       
         </Box>
 
      </Heading>

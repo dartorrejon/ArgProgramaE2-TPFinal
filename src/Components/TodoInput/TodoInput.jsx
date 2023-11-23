@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 
-const TodoInput = ({addTodo,habilitarBusqueda={habilitarBusqueda}}) => {
+const TodoInput = ({addTodo,onHabilitarBusqueda,inputValue}) => {
   
   const [tarea,setTarea]=useState('');
 
@@ -34,7 +34,9 @@ const TodoInput = ({addTodo,habilitarBusqueda={habilitarBusqueda}}) => {
       setTarea('');
      
   }
-
+  const handlehabilitarBusqueda=(e)=>{
+    onHabilitarBusqueda(e.target.value);
+  }
 
   return (
     <>
@@ -46,7 +48,7 @@ const TodoInput = ({addTodo,habilitarBusqueda={habilitarBusqueda}}) => {
           borderRadius="0"
           height="50px"
           onChange={cargarTarea}
-          onBlur={()=>habilitarBusqueda(tarea)}
+          onBlur={handlehabilitarBusqueda}
           value={tarea}
           onKeyDown={ addTask}
         />
