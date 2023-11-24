@@ -15,6 +15,8 @@ const FiltersContainer = ({children})=>{
     )
 }
 const FilterButton=({action,filter,icon})=>{
+
+    
     return(
         <Box mb="10px" textAlign="center" display="flex" flexDirection="column" alignItems="center">
         {icon==1 && <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />}

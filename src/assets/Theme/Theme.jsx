@@ -2,15 +2,11 @@ import { extendTheme } from "@chakra-ui/react"
 
 const colors={
     dark:{
-        negro:'#151515',
-        gris:'#A3A2A2',
-        grisOscuro:'#555555'
+        bg:"black"
+        
     },
     light:{
-        celestito:'#99bbd9',
-        azul:'#11539a',
-        azulOscuro:'#153d67',
-        azulGris:'#6494c2',
+        bg:"white"
 
     }
 }
