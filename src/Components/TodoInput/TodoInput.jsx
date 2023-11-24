@@ -1,4 +1,4 @@
-import { Flex, Input, Text,Image, InputGroup, InputRightAddon} from "@chakra-ui/react";
+import { Flex, Input, Text,Image, InputGroup, InputRightAddon, useTheme, useColorMode  } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import plus from "/resourse/plus.jpg?url";
 
@@ -8,19 +8,6 @@ import { useState } from "react";
 
 const TodoInput = ({addTodo}) => {
   
-  // const [listaT,setListaT]=useState([])
-
-  // function addTask() {
-  //   let nuevaTarea = { id: listaT.length+1, task: tarea,estado:false };
-  //   // tasks.push(nuevaTarea)
-   
-  //   // nuevoTask.map((t) => console.log(t));
-  //   // console.log(tasks);
-  //   setListaT(Tasks=>[...Tasks,nuevaTarea]);
-  //   setTarea('')
-    
-  // }
-
   const [tarea,setTarea]=useState('');
 
   function cargarTarea(e){
@@ -42,6 +29,12 @@ const TodoInput = ({addTodo}) => {
    
   }
 
+    
+    const { colorMode } = useColorMode();
+    const theme = useTheme();
+
+
+
 
   return (
     <>
@@ -55,9 +48,15 @@ const TodoInput = ({addTodo}) => {
           onChange={cargarTarea}
           value={tarea}
           onKeyDown={addTask}
+          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
+          color={colorMode === 'dark' ? 'white' : 'gray.800'}
         />
-        <InputRightAddon h="50px" bg="white" borderRadius="0px">
-          <Flex alignItems="center" bg="white">
+        <InputRightAddon 
+        h="50px" 
+        bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
+        borderRadius="0px">
+          <Flex alignItems="center" 
+          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}>
             <Image
               onClick={addTaskClick}
              
@@ -69,7 +68,8 @@ const TodoInput = ({addTodo}) => {
             />
             <Text
               onClick={addTask}
-              color="gray"
+              color={colorMode === 'dark' ? 'white' : 'gray.800'}
+              bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
               fontWeight="semibold"
               fontSize="18px"
               cursor="pointer"

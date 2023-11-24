@@ -1,5 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Box, Flex, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Box, Flex, Input, InputGroup, InputRightElement,useColorMode, useTheme } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { PiCircleLight } from "react-icons/pi";
@@ -8,7 +8,7 @@ const Todo = ({tarea}) => {
     const [estado,setEstado]=useState(false)
     const cambiarEstado=()=>{
         estado?setEstado(false):setEstado(true);
-        // tarea.estado?tarea.estado=false:tarea.estado=true;
+       
         
     }
     const eliminarElemento=(id)=>{
@@ -18,18 +18,26 @@ const Todo = ({tarea}) => {
        
     }
 
+
+    const { colorMode } = useColorMode();
+    const theme = useTheme();
+
+
+
   return (
+
     <Flex flexDirection="row">
       <InputGroup width="100%">
         <Input
           type="text"
-        //   placeholder= {tarea.task}
           readOnly={true}
           fontWeight="medium"
           borderRadius="0"
           height="50px"
           borderTop="none"
           value={tarea.task}
+          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
+          color={colorMode === 'dark' ? theme.colors.dark.color : theme.colors.light.color}
           textDecor={estado?'line-through':'none'}
           _focus={{
             borderColor: "gray.300",
