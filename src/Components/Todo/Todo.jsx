@@ -43,7 +43,7 @@ const Todo = ({tarea, handleSetComplete, handleDelTask}) => {
             <DeleteIcon boxSize="20px" mr="3px" color="grey" alignItems="center" onClick={()=>handleDelTask(tarea.id)}/>
           </Box>
           <Box mr="15px">
-            {!tarea.state ? <PiCircleLight size="28px" color="#4299E1" alignItems="center" strokeWidth={5} onClick={()=>handleSetComplete(tarea.id)} />:
+            {!tarea.state ? <PiCircleLight size="28px" color="#4299E1" align="center" strokeWidth={5} onClick={()=>handleSetComplete(tarea.id)} />:
                 tarea.state &&<IoMdCheckmarkCircle size="28px" color={btn} strokeWidth={5} onClick={()=>handleSetComplete(tarea.id)} />}
           </Box>
         </InputRightElement>

@@ -21,6 +21,8 @@ const Header = ({ onBuscar }) => {
   colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
   const color =
   colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
+  const lupa =
+  colorMode === "dark" ? theme.colors.dark.lupa : theme.colors.light.lupa;
 
   return (
     <Heading
@@ -54,7 +56,7 @@ const Header = ({ onBuscar }) => {
         <Box>
           <Search2Icon
             boxSize="27px"
-            color="grey"
+            color={lupa}
             ml="100px"
             onClick={onBuscar}
             style={{ cursor: "pointer" }}

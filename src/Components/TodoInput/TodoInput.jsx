@@ -75,13 +75,13 @@ const TodoInput = ({addTodo,onHabilitarBusqueda,inputValue}) => {
         h="50px" 
         bg={bg}
         borderRadius="0px">
-          <Flex alignItems="center" 
+          <Flex align="center" 
           bg={bg}>
             <FaCirclePlus 
               color="#4299E1"
               onClick={addTaskClick}
               size="22px"
-              alignSelf="center"
+              align="center"
               cursor="pointer"
             />
             <Text
