@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "task": "Hacer la comida",
+        "state": false
+    },
+    {
+        "id": 2,
+        "task": "Programar trabajo final",
+        "state": true
+    },
+    {
+        "id": 3,
+        "task": "Hacer los cuestionarios",
+        "state": false
+    },
+    {
+        "id": 4,
+        "task": "Terminar trabajo 7",
+        "state": true
+    }
+]

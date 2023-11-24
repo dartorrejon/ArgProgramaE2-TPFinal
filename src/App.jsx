@@ -6,6 +6,7 @@ import TodoList from "./Components/TodoList/TodoList";
 import Todo from "./Components/Todo/Todo";
 import TodoFilters from "./Components/Filtro/TodoFilters";
 import { theme } from "./assets/Theme/Theme";
+import Rutas from "./Rutas";
 
 
 
@@ -16,7 +17,8 @@ function App() {
     { id: 3, task: "Hacer los cuestionarios", state: false },
     { id: 4, task: "Terminar trabajo 7", state: false },
   ];
-  const [todos, setTodos] = useState(datos);
+
+const [todos, setTodos] = useState(datos);
 
   const addTodo = (task) => {
     const ultimaTarea = todos.length > 0 ? todos[todos.length - 1].id : 1;
@@ -95,6 +97,7 @@ function App() {
         width="500px"
         bg='white'
         padding="0"
+
         borderRadius="2px"
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
         transition="box-shadow 0.3s ease-in-out"

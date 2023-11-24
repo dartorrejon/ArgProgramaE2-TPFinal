@@ -1,5 +1,8 @@
 import React from 'react'
 import { FilterButton, FiltersContainer } from './Filtro.components'
+import { Center, Link } from '@chakra-ui/layout'
+import { Button } from '@chakra-ui/button'
+
 
 const TodoFilters = () => {
   return (
