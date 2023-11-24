@@ -6,13 +6,18 @@ import Todo from '../Todo/Todo';
 
 // import { IoMdCheckmarkCircle } from 'react-icons/io';
 
-const TodoList = ({ todos }) => {
-
+const TodoList = ({ todos, handleSetComplete, handleDelTask }) => {
   return (
-    <Box pb='80px'>
+    <Box>
       {todos.map(todo => {
         return (
-          <Todo key={todo.id} tarea={todo} />
+          <Todo
+            key={todo.id}
+            tarea={todo}
+            handleSetComplete={handleSetComplete}
+            handleDelTask={handleDelTask}
+
+          />
         )
       })}
     </Box>

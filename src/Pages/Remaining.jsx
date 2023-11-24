@@ -3,14 +3,20 @@ import React, { useEffect } from 'react'
 import Todo from '../Components/Todo/Todo';
 
 
-const Remaining = ({ todos }) => {
+const Remaining = ({ todos, handleSetComplete, handleDelTask }) => {
 
-    const completos = todos.filter(todo => todo.state === false);
+    const incompletos = todos.filter(todo => todo.state === false);
     return (
         <Box pb='80px'>
-            {completos.map(todo => {
+            {incompletos.map(todo => {
                 return (
-                    <Todo key={todo.id} tarea={todo} />
+                    <Todo
+                        key={todo.id}
+                        tarea={todo}
+                        handleSetComplete={handleSetComplete}
+                        handleDelTask={handleDelTask}
+
+                    />
                 )
             })}
         </Box>

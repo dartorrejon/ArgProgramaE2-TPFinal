@@ -9,13 +9,13 @@ import Completed from './Pages/Completed';
 import TodoList from './Components/TodoList/TodoList';
 import Remaining from './Pages/Remaining';
 
-const Rutas = ({ tasks }) => {
+const Rutas = ({ tasks, handleSetComplete, handleDelTask }) => {
     return (
         <Router>
             <Routes>
-                <Route exact path={routes.HOME} element={<TodoList todos={tasks} />} />
-                <Route path={routes.COMPLETAS} element={<Completed todos={tasks} />} />
-                <Route path={routes.PENDIENTES} element={<Remaining todos={tasks} />} />
+                <Route exact path={routes.HOME} element={<TodoList todos={tasks} handleSetComplete={handleSetComplete} handleDelTask={handleDelTask} />} />
+                <Route path={routes.COMPLETAS} element={<Completed todos={tasks} handleSetComplete={handleSetComplete} handleDelTask={handleDelTask} />} />
+                <Route path={routes.PENDIENTES} element={<Remaining todos={tasks} handleSetComplete={handleSetComplete} handleDelTask={handleDelTask} />} />
             </Routes>
         </Router>
 
