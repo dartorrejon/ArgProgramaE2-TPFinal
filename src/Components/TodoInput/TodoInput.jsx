@@ -22,7 +22,7 @@ const TodoInput = ({addTodo,onHabilitarBusqueda,inputValue}) => {
       } 
       addTodo(tarea);
       setTarea('');
-      console.log(tarea);
+      // console.log(tarea);
     }
   }
   const addTaskClick=(e)=>{

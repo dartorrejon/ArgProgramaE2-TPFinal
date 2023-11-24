@@ -42,23 +42,35 @@ function App() {
   };
 
   /*************************** */
-  
-    const [buscar, setBuscar] = useState("");
-    const handlehabilitarBusqueda = (tarea) => {
-      setBuscar(tarea);
-    };
 
-    const handleBuscar = () => {
-      console.log(buscar);
-      console.log(todos);
-        if(buscar==''){
-      setTodos(datos)
-    }else{
+  const [buscar, setBuscar] = useState("");
+  const handlehabilitarBusqueda = (tarea) => {
+    setBuscar(tarea);
+  };
+  
+  const [preFilter,setPreFilter]=useState([...todos])
+  const handleBuscar = () => {
+   
+    if (buscar == "") {
+      setPreFilter(preFilter)
+      setRecarga(!recarga)
+      console.log('cambio el prefilter');
+    } else {
+      setPreFilter([...todos])
       const buscarList = todos.filter((todo) => todo.task.includes(buscar));
       setTodos(buscarList);
     }
-    };
-  
+  };
+
+  /*************************** */
+  const[recarga,setRecarga]=useState(false)
+  useEffect(()=>{
+     console.log('prefilter:'+preFilter);
+    const recargarTask=()=>{
+      setTodos(preFilter);
+    }
+    recargarTask();
+  },[recarga]);
   /*************************** */
   // },[buscar]);
 
@@ -83,7 +95,11 @@ function App() {
         transition="box-shadow 0.3s ease-in-out"
       >
         <Header onBuscar={handleBuscar} />
-        <TodoInput addTodo={addTodo} inputValue={buscar} onHabilitarBusqueda={handlehabilitarBusqueda} />
+        <TodoInput
+          addTodo={addTodo}
+          inputValue={buscar}
+          onHabilitarBusqueda={handlehabilitarBusqueda}
+        />
         <TodoList
           todos={todos}
           handleSetComplete={handleSetComplete}

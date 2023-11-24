@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { PiCircleLight } from "react-icons/pi";
 
-const Todo = ({tarea, handleSetComplete, handleDelTask,habilitarBusqueda}) => {
+const Todo = ({tarea, handleSetComplete, handleDelTask}) => {
   
 
   return (
@@ -20,7 +20,7 @@ const Todo = ({tarea, handleSetComplete, handleDelTask,habilitarBusqueda}) => {
           borderTop="none"
           value={tarea.task}
           textDecor={tarea.state?'line-through':'none'}
-          onBlur={()=>habilitarBusqueda(tarea.task)}
+          // onBlur={()=>habilitarBusqueda(tarea.task)}
           _focus={{
             borderColor: "gray.300",
           }}
