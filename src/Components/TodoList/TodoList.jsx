@@ -6,22 +6,22 @@ import Todo from '../Todo/Todo';
 
 // import { IoMdCheckmarkCircle } from 'react-icons/io';
 
-const TodoList = ({todos}) => {
-  
-    return (
-      <Box>
-        {todos.map(todo=>{
-          return (
-            <Todo key={todo.id} tarea={todo}/>
-          )
-        })}
-      </Box>
+const TodoList = ({ todos }) => {
+
+  return (
+    <Box pb='80px'>
+      {todos.map(todo => {
+        return (
+          <Todo key={todo.id} tarea={todo} />
+        )
+      })}
+    </Box>
     //   <Flex flexDirection="row">
     //     {tasks.map(tarea=> 
     //      <InputGroup width="100%">
     //     <Input
     //       type="text"
-         
+
     //       placeholder='{tarea.task}'
     //       value='{tarea.task}'
     //       readOnly={true}
@@ -32,7 +32,7 @@ const TodoList = ({todos}) => {
     //       _focus={{
     //         borderColor: 'gray.300',
     //           }}
-          
+
     //     />
     //     <InputRightElement w='60px'>
     //       <Box>
@@ -42,14 +42,14 @@ const TodoList = ({todos}) => {
     //       {/* { (!tarea.estado) && <PiCircleLight size="28px" strokeWidth={5} onClick={terminar}/> }
     //       {(tarea.estado) &&<IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2} />} */}
     //       </Box>
-          
+
     //    </InputRightElement>
     //   </InputGroup>
     //   )}
     // </Flex>
     // // <Flex minH='70vh' flexDirection='column'>
     // //     {tasks.map(task=><Tarea key={task.id} tarea={task.task} estado={task.estado} ></Tarea>)}
-        
+
     // // </Flex>
   )
 }
