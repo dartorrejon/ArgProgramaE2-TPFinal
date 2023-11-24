@@ -2,11 +2,17 @@ import { extendTheme } from "@chakra-ui/react"
 
 const colors={
     dark:{
-        bg:"black"
+        bgHF:"#424242",
+        bgTodo:"#515151",
+        color:"#e0e0e0",
+        colorBoton:"#8b8b8b"
         
     },
     light:{
-        bg:"white"
+        bgHF:"white",
+        bgTodo:"white",
+        color: "#8b8b8b",
+        colorBoton: "e0e0e0"
 
     }
 }

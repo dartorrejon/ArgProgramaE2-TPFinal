@@ -1,6 +1,7 @@
 import { Flex, Input, Text,Image, InputGroup, InputRightAddon, useTheme, useColorMode  } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import plus from "/resourse/plus.jpg?url";
+import { FaCirclePlus } from "react-icons/fa6"
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -38,9 +39,14 @@ const TodoInput = ({addTodo,onHabilitarBusqueda,inputValue}) => {
     onHabilitarBusqueda(e.target.value);
   }
   
-  const { colorMode } = useColorMode();
+  
+  const { colorMode, toggleColorMode } = useColorMode();
   const theme = useTheme();
 
+  const bg =
+  colorMode === "dark" ? theme.colors.dark.bgTodo : theme.colors.light.bgTodo;
+  const color =
+  colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
 
 
 
@@ -57,29 +63,32 @@ const TodoInput = ({addTodo,onHabilitarBusqueda,inputValue}) => {
           onBlur={handlehabilitarBusqueda}
           value={tarea}
           onKeyDown={addTask}
-          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
-          color={colorMode === 'dark' ? 'white' : 'gray.800'}
+          bg={bg}
+          color={color}
+          _focus={{
+            borderColor: "gray.300",
+            boxShadow: "none",
+          }}
+          
         />
         <InputRightAddon 
         h="50px" 
-        bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
+        bg={bg}
         borderRadius="0px">
           <Flex alignItems="center" 
-          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}>
-            <Image
+          bg={bg}>
+            <FaCirclePlus 
+              color="#4299E1"
               onClick={addTaskClick}
-              
-              src={plus}
-              h="25px"
-              w="25px"
+              size="22px"
               alignSelf="center"
-              mr="2"
+              cursor="pointer"
             />
             <Text
               onClick={addTaskClick}
-              color={colorMode === 'dark' ? 'white' : 'gray.800'}
-              bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
-              fontWeight="semibold"
+              color={color}
+              bg={bg}
+              fontWeight="normal"
               fontSize="18px"
               cursor="pointer"
               borderRadius="0"

@@ -12,12 +12,15 @@ import {
 import { Search2Icon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import logo from "/resourse/faire.png?url";
 
+
 const Header = ({ onBuscar }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const theme = useTheme();
+
   const bg =
-    colorMode === "dark" ? theme.colors.dark.bg : theme.colors.light.bg;
-  const color = colorMode === "dark" ? "white" : "gray.800";
+  colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
+  const color =
+  colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
 
   return (
     <Heading
@@ -39,7 +42,7 @@ const Header = ({ onBuscar }) => {
         <IconButton
           icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
           boxSize="27px"
-          bg="white"
+          bg={bg}
           color="grey"
           onClick={toggleColorMode}
           mr="100px"
