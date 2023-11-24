@@ -3,6 +3,8 @@ import { FilterButton, FiltersContainer } from './Filtro.components'
 
 const TodoFilters = () => {
   return (
+
+    
    <FiltersContainer>
         <FilterButton action={()=>{}}  filter='Noche' icon={1}/>
         <FilterButton action={()=>{}}  filter='Completed' icon={2}/>

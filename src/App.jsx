@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Box, Container, Flex, Text } from "@chakra-ui/react";
+import { useState,useEffect } from "react";
+import { Box, Container,CSSReset, ThemeProvider,ColorModeProvider } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
 import Todo from "./Components/Todo/Todo";
 import TodoFilters from "./Components/Filtro/TodoFilters";
-import { useEffect } from "react";
+import { theme } from "./assets/Theme/Theme";
+
+
 
 function App() {
   const datos = [
@@ -85,10 +87,13 @@ function App() {
 
   // }
   return (
-    <Box w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
-      <Container
+    <ThemeProvider theme={theme}>
+       <ColorModeProvider>
+       <CSSReset />
+        <Box  w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
+        <Container
         width="500px"
-        bg="white"
+        bg='white'
         padding="0"
         borderRadius="2px"
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
@@ -109,6 +114,8 @@ function App() {
         <TodoFilters />
       </Container>
     </Box>
+    </ColorModeProvider>
+    </ThemeProvider>
   );
 }
 

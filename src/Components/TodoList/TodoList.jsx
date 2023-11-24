@@ -1,16 +1,8 @@
-import {
-  Box,
-  Flex,
-  Input,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { DeleteIcon } from "@chakra-ui/icons";
-import Todo from "../Todo/Todo";
-// import { PiCircleLight } from 'react-icons/pi';
+import { Box, Flex, Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
+import { DeleteIcon } from '@chakra-ui/icons';
+import Todo from '../Todo/Todo';
 
-// import { IoMdCheckmarkCircle } from 'react-icons/io';
 
 const TodoList = ({ todos, handleSetComplete, handleDelTask }) => {
   return (

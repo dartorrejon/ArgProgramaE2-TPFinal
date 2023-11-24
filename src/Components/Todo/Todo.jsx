@@ -1,5 +1,5 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Box, Flex, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Box, Flex, Input, InputGroup, InputRightElement,useColorMode, useTheme } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { PiCircleLight } from "react-icons/pi";
@@ -7,20 +7,27 @@ import { PiCircleLight } from "react-icons/pi";
 const Todo = ({tarea, handleSetComplete, handleDelTask}) => {
   
 
+
+    const { colorMode } = useColorMode();
+    const theme = useTheme();
+
+
+
   return (
+
     <Flex flexDirection="row">
       <InputGroup width="100%">
         <Input
           type="text"
-        //   placeholder= {tarea.task}
           readOnly={true}
           fontWeight="medium"
           borderRadius="0"
           height="50px"
           borderTop="none"
           value={tarea.task}
+          bg={colorMode === 'dark' ? theme.colors.dark.bg : theme.colors.light.bg}
+          color={colorMode === 'dark' ? theme.colors.dark.color : theme.colors.light.color}
           textDecor={tarea.state?'line-through':'none'}
-          // onBlur={()=>habilitarBusqueda(tarea.task)}
           _focus={{
             borderColor: "gray.300",
           }}
