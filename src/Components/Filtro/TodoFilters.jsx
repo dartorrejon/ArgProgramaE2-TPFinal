@@ -1,6 +1,6 @@
 import React from 'react'
 import { FilterButton, FiltersContainer } from './Filtro.components'
-import { Center, Link } from '@chakra-ui/layout'
+import { Center, Link, Box } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 
 
