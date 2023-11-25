@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Container, CSSReset, ThemeProvider, ColorModeProvider, useColorMode } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
-import Todo from "./Components/Todo/Todo";
-import TodoFilters from "./Components/Filtro/TodoFilters";
 import { theme } from "./assets/Theme/Theme";
-import Rutas from "./Rutas";
-
+import Footer from "./Components/Footer/Footer";
+import './App.css'
 
 
 function App() {
@@ -96,18 +94,20 @@ function App() {
     <ThemeProvider theme={theme}>
       <ColorModeProvider>
         <CSSReset />
-        <Box w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
+        <Box w="100vw" h="100vh" display="flex" pos='relative'>
           <Container
-            width="500px"
-            h={1}
+            width={{ base: "500px", md: '90%' }}
             bg={bg}
             padding="0"
-
+            mt={{ md: '100px' }}
+            h='fit-content'
+            maxW='100vw'
             borderRadius="2px"
-            boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
+            // boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
             transition="box-shadow 0.3s ease-in-out"
+            pos='relative'
           >
-            <Header onBuscar={handleBuscar} />
+            <Header onBuscar={handleBuscar} getFilter={getFilter} />
             <TodoInput
               addTodo={addTodo}
               inputValue={buscar}
@@ -115,6 +115,7 @@ function App() {
               setTodos={setTodos}
               auxList={auxList}
             />
+            <Container h='15px' w='100%' bg={bg}></Container>
             <TodoList
               todos={todos}
               handleSetComplete={handleSetComplete}
@@ -124,8 +125,7 @@ function App() {
               lista={auxList}
               setAuxList={setAuxList}
             />
-
-            <TodoFilters getFilter={getFilter} />
+            <Footer getFilter={getFilter} />
           </Container>
         </Box>
       </ColorModeProvider>

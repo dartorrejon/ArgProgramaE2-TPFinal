@@ -1,4 +1,4 @@
-import { Box, Flex, Input, InputGroup, InputRightElement, useColorMode } from '@chakra-ui/react'
+import { Box, Flex, Input, InputGroup, InputRightElement, useColorMode, useTheme } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { DeleteIcon } from '@chakra-ui/icons';
 import Todo from '../Todo/Todo';
@@ -6,6 +6,13 @@ import { theme } from '../../assets/Theme/Theme';
 
 
 const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, lista, setAuxList }) => {
+
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const theme = useTheme();
+
+  const bg =
+    colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
 
   useEffect(() => {
     const cambioLista = () => {
@@ -28,6 +35,12 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, l
   return (
 
     <Box
+      h={{ base: 'calc(100vh - 11vh)', md: '70vh' }}
+      pb={{ base: '115px', md: '0px' }}
+      // mt={{ md: '10px' }}
+      bg={bg}
+      overflowY='auto'
+      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
 
     >
       {todos.map((todo) => {

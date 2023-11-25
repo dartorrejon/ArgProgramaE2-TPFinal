@@ -51,7 +51,6 @@ const FilterButton = ({ action, filter, icon, getFilter }) => {
             textAlign="center"
             display="flex"
             flexDirection="column"
-            borderTop="2px solid blue"
             alignItems="center"
             onClick={() => getFilter(filter)}>
             {icon == 1 && <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />}
