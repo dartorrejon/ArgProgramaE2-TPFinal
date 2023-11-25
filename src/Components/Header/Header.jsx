@@ -23,6 +23,8 @@ const Header = ({ onBuscar, getFilter }) => {
     colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
   const lupa =
     colorMode === "dark" ? theme.colors.dark.lupa : theme.colors.light.lupa;
+  const lupaInvertida =
+    colorMode === "dark" ? theme.colors.light.lupa : theme.colors.dark.lupa;
   const colorBoton =
     colorMode === "dark" ? theme.colors.dark.colorBoton : theme.colors.light.colorBoton;
 
@@ -49,10 +51,12 @@ const Header = ({ onBuscar, getFilter }) => {
         <IconButton
           icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
           boxSize={{ base: "27px", md: "25px", lg: "32px" }}
+          fontSize={{ base: "27px", md: "25px", lg: "32px" }}
           bg={bg}
-          color="grey"
+          color={lupa}
           onClick={toggleColorMode}
-        // mr="100px"
+          style={{ cursor: "pointer" }}
+          _hover={{ color: lupaInvertida }}
         />
         <Box>
           <Image src={logo} width="125px" />
@@ -75,9 +79,9 @@ const Header = ({ onBuscar, getFilter }) => {
           <Search2Icon
             boxSize="27px"
             color={lupa}
-            // ml="100px"
             onClick={onBuscar}
             style={{ cursor: "pointer" }}
+            _hover={{ color: lupaInvertida }}
           />
         </Box>
       </Box>

@@ -18,15 +18,12 @@ const Filtros = ({ getFilter }) => {
 
     function activo1() {
         setActivo([true, false, false])
-        console.log(activo)
     }
     function activo2() {
         setActivo([false, true, false])
-        console.log(activo)
     }
     function activo3() {
         setActivo([false, false, true])
-        console.log(activo)
     }
 
     return (
@@ -42,6 +39,7 @@ const Filtros = ({ getFilter }) => {
                 borderTop={activo[0] && `4px solid ${colorAzul}`}
                 color={activo[0] && colorAzul}
                 _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("All")
                     activo1()
@@ -50,7 +48,7 @@ const Filtros = ({ getFilter }) => {
 
                     <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />
                 </Box>
-                <Text>All</Text>
+                <Text pointerEvents='none'>All</Text>
             </Box>
             <Box
                 mb="10px"
@@ -63,6 +61,7 @@ const Filtros = ({ getFilter }) => {
                 borderTop={activo[1] && `4px solid ${colorAzul}`}
                 color={activo[1] && colorAzul}
                 _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("Completed")
                     activo2()
@@ -70,7 +69,7 @@ const Filtros = ({ getFilter }) => {
                 <Box display={{ md: 'none' }}>
                     <IoMdCheckmarkCircle size={"30px"} mb="2px" strokeWidth={2} />
                 </Box>
-                <Text>Completed</Text>
+                <Text pointerEvents='none'>Completed</Text>
             </Box>
             <Box
                 mb="10px"
@@ -83,6 +82,7 @@ const Filtros = ({ getFilter }) => {
                 borderTop={activo[2] && `4px solid ${colorAzul}`}
                 color={activo[2] && colorAzul}
                 _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("Remaining")
                     activo3()
@@ -91,7 +91,7 @@ const Filtros = ({ getFilter }) => {
                     <PiCircleLight size="30px" mb="2px" strokeWidth={2} />
 
                 </Box>
-                <Text>Remaining</Text>
+                <Text pointerEvents='none'>Remaining</Text>
             </Box>
         </>
     )
