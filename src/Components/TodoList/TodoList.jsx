@@ -37,8 +37,8 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, l
     <Box
       h={{ base: 'calc(100vh - 11vh)', md: '70vh' }}
       pb={{ base: '115px', md: '0px' }}
-      w={{ md: '80%' }}
-      mx={{ md: '10%' }}
+      w={{ md: '60%' }}
+      mx={{ md: '20%' }}
       bg={bg}
       overflowY='auto'
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"

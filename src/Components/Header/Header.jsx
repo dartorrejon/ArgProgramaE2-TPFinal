@@ -39,13 +39,11 @@ const Header = ({ onBuscar, getFilter }) => {
       color={color}
       mb={{ md: '20px' }}
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-
-
     >
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="space-around"
+        justifyContent="space-between"
         width="100%"
       >
         <IconButton

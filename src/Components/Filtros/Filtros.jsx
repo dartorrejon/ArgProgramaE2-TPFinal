@@ -39,9 +39,9 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[0] && `2px solid ${colorAzul}`}
+                borderTop={activo[0] && `4px solid ${colorAzul}`}
                 color={activo[0] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
                 onClick={() => {
                     getFilter("All")
                     activo1()
@@ -60,9 +60,9 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[1] && `2px solid ${colorAzul}`}
+                borderTop={activo[1] && `4px solid ${colorAzul}`}
                 color={activo[1] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
                 onClick={() => {
                     getFilter("Completed")
                     activo2()
@@ -80,9 +80,9 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[2] && `2px solid ${colorAzul}`}
+                borderTop={activo[2] && `4px solid ${colorAzul}`}
                 color={activo[2] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
                 onClick={() => {
                     getFilter("Remaining")
                     activo3()
