@@ -13,12 +13,17 @@ import Rutas from "./Rutas";
 function App() {
   const datos = [
     { id: 1, task: "Hacer la comida", state: false },
-    { id: 2, task: "Programar trabajo final", state: false },
-    { id: 3, task: "Hacer los cuestionarios", state: false },
+    { id: 2, task: "Programar trabajo final", state: true },
+    { id: 3, task: "Hacer los cuestionarios", state: true },
     { id: 4, task: "Terminar trabajo 7", state: false },
+    { id: 5, task: "Sacar al perro", state: false },
+    { id: 6, task: "Arreglar bugs", state: true },
+    { id: 7, task: "Leer documentacion sobre regex", state: false },
+    { id: 8, task: "Implementar Chakra UI", state: true },
   ];
 
 const [todos, setTodos] = useState(datos);
+const [filter, setFilter] = useState('All');
 
   const addTodo = (task) => {
     const ultimaTarea = todos.length > 0 ? todos[todos.length - 1].id : 1;
@@ -88,6 +93,12 @@ const [todos, setTodos] = useState(datos);
   //   }
 
   // }
+
+   const getFilter = (filtro) => {
+    setFilter(filtro);
+    console.log(filter);
+   }
+
   return (
     <ThemeProvider theme={theme}>
        <ColorModeProvider>
@@ -112,9 +123,10 @@ const [todos, setTodos] = useState(datos);
           todos={todos}
           handleSetComplete={handleSetComplete}
           handleDelTask={handleDelTask}
+          filter={filter}
         />
 
-        <TodoFilters />
+        <TodoFilters getFilter={getFilter}/>
       </Container>
     </Box>
     </ColorModeProvider>

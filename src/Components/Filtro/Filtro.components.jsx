@@ -28,7 +28,7 @@ const FiltersContainer = ({children})=>{
         </Flex>
     )
 }
-const FilterButton=({action,filter,icon})=>{
+const FilterButton=({action,filter,icon, getFilter})=>{
 
     const { colorMode, toggleColorMode } = useColorMode();
     const theme = useTheme();
@@ -41,16 +41,15 @@ const FilterButton=({action,filter,icon})=>{
     
     return(
         <Box 
-        mb="10px"
+        mb="10px" 
         textAlign="center" 
         display="flex" 
         flexDirection="column" 
         alignItems="center"
-        >
-            
-        {icon==1 && <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} color={color}/>}
-        {icon==2 && <IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2} color={color}/>}
-        {icon==3 &&  <PiCircleLight size="30px" mb="2px" strokeWidth={5} color={color}/>}
+        onClick={() => getFilter(filter)}>
+        {icon==1 && <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />}
+        {icon==2 && <IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2}/>}
+        {icon==3 &&  <PiCircleLight size="30px" mb="2px" strokeWidth={5} />}
 
         <Text>{filter}</Text>
       </Box>
