@@ -1,5 +1,5 @@
-import { useState,useEffect } from "react";
-import { Box, Container,CSSReset, ThemeProvider,ColorModeProvider, useColorMode } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { Box, Container, CSSReset, ThemeProvider, ColorModeProvider, useColorMode } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
@@ -23,8 +23,9 @@ function App() {
   ];
 
 
-const [todos, setTodos] = useState(datos);
-const [filter, setFilter] = useState('All');
+  const [todos, setTodos] = useState(datos);
+  const [filter, setFilter] = useState('All');
+
 
 
   const addTodo = (task) => {
@@ -59,82 +60,81 @@ const [filter, setFilter] = useState('All');
   const handlehabilitarBusqueda = (tarea) => {
     setBuscar(tarea);
   };
-  
-  const [preFilter,setPreFilter]=useState([...todos])
+
+  const [preFilter, setPreFilter] = useState([...todos])
   const handleBuscar = () => {
-   
+
     if (buscar == "") {
       setPreFilter(preFilter)
       setRecarga(!recarga)
-        console.log('cambio el prefilter');
+      console.log('cambio el prefilter');
     } else {
-     
+
       setPreFilter([...todos])
       setAuxList(preFilter)
       const buscarList = todos.filter((todo) => todo.task.includes(buscar));
-      
+
       setTodos(buscarList);
     }
   };
 
   /*************************** */
-  const[recarga,setRecarga]=useState(false)
-  useEffect(()=>{
-     console.log('prefilter:'+preFilter);
-    const recargarTask=()=>{
+  const [recarga, setRecarga] = useState(false)
+  useEffect(() => {
+    console.log('prefilter:' + preFilter);
+    const recargarTask = () => {
       setTodos(preFilter);
     }
     recargarTask();
-  },[recarga]);
-/********************* */
+  }, [recarga]);
+  /********************* */
 
-   const getFilter = (filtro) => {
+  const getFilter = (filtro) => {
     setFilter(filtro);
-     setTodos(preFilter)
-    
+    setTodos(preFilter)
+
     console.log(filter);
-   }
-   const [lista, setAuxList] = useState([...todos])
-   const { colorMode, toggleColorMode } = useColorMode();
-   const bg =
-   colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
-   const color =
-   colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
+  }
+  const [lista, setAuxList] = useState([...todos])
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg =
+    colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
+  const color =
+    colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
 
   return (
     <ThemeProvider theme={theme}>
-       <ColorModeProvider>
-       <CSSReset />
-        <Box  w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
-        <Container
-        width="500px"
-        h={1}
-        bg={bg}
-        padding="0"
+      <ColorModeProvider>
+        <CSSReset />
+        <Box w="100%" h="100vh" bg={bg} pt="50px" display="flex" alignItems="center">
+          <Container
+            width="500px"
+            bg={bg}
+            padding="0"
 
-        borderRadius="2px"
-        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-        transition="box-shadow 0.3s ease-in-out"
-      >
-        <Header onBuscar={handleBuscar} />
-        <TodoInput
-          addTodo={addTodo}
-          inputValue={buscar}
-          onHabilitarBusqueda={handlehabilitarBusqueda}
-        />
-        <TodoList
-          todos={todos}
-          handleSetComplete={handleSetComplete}
-          handleDelTask={handleDelTask}
-          filter={filter}
-          setTodos={setTodos}
-          lista={lista}
-        />
+            borderRadius="2px"
+            boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
+            transition="box-shadow 0.3s ease-in-out"
+          >
+            <Header onBuscar={handleBuscar} />
+            <TodoInput
+              addTodo={addTodo}
+              inputValue={buscar}
+              onHabilitarBusqueda={handlehabilitarBusqueda}
+            />
+            <TodoList
+              todos={todos}
+              handleSetComplete={handleSetComplete}
+              handleDelTask={handleDelTask}
+              filter={filter}
+              setTodos={setTodos}
+              lista={lista}
+            />
 
-        <TodoFilters getFilter={getFilter}/>
-      </Container>
-    </Box>
-    </ColorModeProvider>
+            <TodoFilters getFilter={getFilter} />
+          </Container>
+        </Box>
+      </ColorModeProvider>
     </ThemeProvider>
   );
 }
