@@ -4,43 +4,31 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import Todo from '../Todo/Todo';
 
 
-const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos,lista}) => {
-  // const [lista, setAuxList] = useState([...todos])
-  let auxList = []
-  let aux2=[...todos]
+const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, lista, setAuxList }) => {
 
   useEffect(() => {
-    const cambioLista = () =>{
-
+    const cambioLista = () => {
       if (filter == 'All') {
-      console.log(todos);
-        // setTodos(todos)
         setTodos(lista)
+        console.log('all:', lista)
+      } else if (filter == 'Completed') {
+        let aux2 = [...lista];
+        setTodos(lista.filter((todo) => todo.state == true));
+        setAuxList(aux2)
+      } else if (filter == 'Remaining') {
+        let aux2 = [...lista];
+        setTodos(lista.filter((todo) => todo.state == false));
+        setAuxList(aux2)
+      }
     }
-    if (filter == 'Completed') {
-      aux2=lista;
-      setTodos(todos.filter((todo) => todo.state == true));
-      // setTodos(auxList)
-    }
-
-    if (filter == 'Remaining') {
-      aux2=lista;
-      setTodos(todos.filter((todo) => todo.state == false));
-      // setTodos(auxList)
-    }
-  }
-
-  cambioLista()
+    cambioLista()
   }, [filter])
-
- 
 
   return (
 
-     
-   <Box
-  
-   >
+    <Box
+
+    >
       {todos.map((todo) => {
         return (
           <Todo
@@ -56,7 +44,7 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos,li
 
 
   );
-  
+
 };
 
 export default TodoList;
