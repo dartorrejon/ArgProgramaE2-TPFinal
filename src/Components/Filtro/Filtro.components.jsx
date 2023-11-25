@@ -14,11 +14,17 @@ const FiltersContainer = ({children})=>{
         </Flex>
     )
 }
-const FilterButton=({action,filter,icon})=>{
+const FilterButton=({action,filter,icon, getFilter})=>{
 
     
     return(
-        <Box mb="10px" textAlign="center" display="flex" flexDirection="column" alignItems="center">
+        <Box 
+        mb="10px" 
+        textAlign="center" 
+        display="flex" 
+        flexDirection="column" 
+        alignItems="center"
+        onClick={() => getFilter(filter)}>
         {icon==1 && <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />}
         {icon==2 && <IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2}/>}
         {icon==3 &&  <PiCircleLight size="30px" mb="2px" strokeWidth={5} />}

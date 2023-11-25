@@ -4,14 +4,14 @@ import { Center, Link } from '@chakra-ui/layout'
 import { Button } from '@chakra-ui/button'
 
 
-const TodoFilters = () => {
+const TodoFilters = ({getFilter}) => {
   return (
 
     
    <FiltersContainer>
-        <FilterButton action={()=>{}}  filter='Noche' icon={1}/>
-        <FilterButton action={()=>{}}  filter='Completed' icon={2}/>
-        <FilterButton action={()=>{}}  filter='Remaining' icon={3}/>
+        <FilterButton action={()=>{}} getFilter={getFilter} filter='All' icon={1}/>
+        <FilterButton action={()=>{}}  getFilter={getFilter} filter='Completed' icon={2}/>
+        <FilterButton action={()=>{}}  getFilter={getFilter} filter='Remaining' icon={3}/>
    </FiltersContainer>
   )
 }
