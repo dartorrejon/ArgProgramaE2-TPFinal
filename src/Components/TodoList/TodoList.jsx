@@ -5,48 +5,30 @@ import Todo from '../Todo/Todo';
 import { theme } from '../../assets/Theme/Theme';
 
 
-const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, lista }) => {
-  // const [lista, setAuxList] = useState([...todos])
-  let auxList = []
-  let aux2 = [...todos]
+const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, lista, setAuxList }) => {
 
   useEffect(() => {
     const cambioLista = () => {
-
       if (filter == 'All') {
-        console.log(todos);
-        // setTodos(todos)
         setTodos(lista)
-      }
-      if (filter == 'Completed') {
-        aux2 = lista;
-        setTodos(todos.filter((todo) => todo.state == true));
-        // setTodos(auxList)
-      }
-
-      if (filter == 'Remaining') {
-        aux2 = lista;
-        setTodos(todos.filter((todo) => todo.state == false));
-        // setTodos(auxList)
+        console.log('all:', lista)
+      } else if (filter == 'Completed') {
+        let aux2 = [...lista];
+        setTodos(lista.filter((todo) => todo.state == true));
+        setAuxList(aux2)
+      } else if (filter == 'Remaining') {
+        let aux2 = [...lista];
+        setTodos(lista.filter((todo) => todo.state == false));
+        setAuxList(aux2)
       }
     }
-
     cambioLista()
   }, [filter])
 
-  const { colorMode, toggleColorMode } = useColorMode();
-  const bg =
-    colorMode === "dark" ? theme.colors.dark.bgTodo : theme.colors.light.colorBoton;
-  const color =
-    colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
-
   return (
 
-
     <Box
-      h='50vh'
-      pb='100px'
-      bg={bg}
+
     >
       {todos.map((todo) => {
         return (

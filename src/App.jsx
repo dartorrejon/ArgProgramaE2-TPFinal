@@ -24,7 +24,10 @@ function App() {
 
 
   const [todos, setTodos] = useState(datos);
+  const [auxList, setAuxList] = useState(datos)
   const [filter, setFilter] = useState('All');
+  const [buscar, setBuscar] = useState("");
+  const { colorMode, toggleColorMode } = useColorMode();
 
 
 
@@ -38,7 +41,9 @@ function App() {
     const todoList = [...todos];
     todoList.push(newTask);
     setTodos(todoList);
+    setAuxList(todoList) //Lista Auxiliar
   };
+
   const handleSetComplete = (id) => {
     const updatedList = todos.map((todo) => {
       if (todo.id === id) {
@@ -47,56 +52,41 @@ function App() {
       return todo;
     });
     setTodos(updatedList);
+
+    const updatedList2 = auxList.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, state: !todo.state };
+      }
+      return todo;
+    });
+    setAuxList(updatedList2);
   };
+
   const handleDelTask = (id) => {
-    const deleteList = todos.filter((todo) => todo.id !== id);
+    const deleteList = auxList.filter((todo) => todo.id !== id);
+    const deleteList2 = todos.filter((todo) => todo.id !== id);
     setAuxList(deleteList)
-    setTodos(deleteList);
+    setTodos(deleteList2);
   };
 
-  /*************************** */
-
-  const [buscar, setBuscar] = useState("");
   const handlehabilitarBusqueda = (tarea) => {
     setBuscar(tarea);
   };
 
-  const [preFilter, setPreFilter] = useState([...todos])
   const handleBuscar = () => {
-
     if (buscar == "") {
-      setPreFilter(preFilter)
-      setRecarga(!recarga)
-      console.log('cambio el prefilter');
+      setTodos(auxList)
+      console.log('cargamos Lista AUx');
     } else {
-
-      setPreFilter([...todos])
-      setAuxList(preFilter)
       const buscarList = todos.filter((todo) => todo.task.includes(buscar));
-
       setTodos(buscarList);
     }
   };
 
-  /*************************** */
-  const [recarga, setRecarga] = useState(false)
-  useEffect(() => {
-    console.log('prefilter:' + preFilter);
-    const recargarTask = () => {
-      setTodos(preFilter);
-    }
-    recargarTask();
-  }, [recarga]);
-  /********************* */
-
   const getFilter = (filtro) => {
     setFilter(filtro);
-    setTodos(preFilter)
-
-    console.log(filter);
   }
-  const [lista, setAuxList] = useState([...todos])
-  const { colorMode, toggleColorMode } = useColorMode();
+
   const bg =
     colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
   const color =
@@ -106,9 +96,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <ColorModeProvider>
         <CSSReset />
-        <Box w="100%" h="100vh" bg={bg} pt="50px" display="flex" alignItems="center">
+        <Box w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
           <Container
             width="500px"
+            h={1}
             bg={bg}
             padding="0"
 
@@ -121,6 +112,8 @@ function App() {
               addTodo={addTodo}
               inputValue={buscar}
               onHabilitarBusqueda={handlehabilitarBusqueda}
+              setTodos={setTodos}
+              auxList={auxList}
             />
             <TodoList
               todos={todos}
@@ -128,7 +121,8 @@ function App() {
               handleDelTask={handleDelTask}
               filter={filter}
               setTodos={setTodos}
-              lista={lista}
+              lista={auxList}
+              setAuxList={setAuxList}
             />
 
             <TodoFilters getFilter={getFilter} />
