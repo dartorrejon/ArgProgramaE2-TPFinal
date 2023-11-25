@@ -31,15 +31,15 @@ const Header = ({ onBuscar, getFilter }) => {
       as="nav"
       display="flex"
       justifyContent="center"
-      minH="50px"
+      minH="10vh"
       px='40px'
       w='100%'
       alignItems="center"
       bg={bg}
       color={color}
-      pos={{ base: 'initial', md: 'fixed' }}
-      top={0}
-      left={0}
+      mb={{ md: '20px' }}
+      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
+
 
     >
       <Box
@@ -50,8 +50,7 @@ const Header = ({ onBuscar, getFilter }) => {
       >
         <IconButton
           icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
-          boxSize="27px"
-          fontSize={20}
+          boxSize={{ base: "27px", md: "25px", lg: "32px" }}
           bg={bg}
           color="grey"
           onClick={toggleColorMode}
@@ -65,7 +64,7 @@ const Header = ({ onBuscar, getFilter }) => {
           mt="-1px"
           w='500px'
           h='90%'
-          fontSize={15}
+          fontSize={{ base: '15px', md: '15px', lg: '20px' }}
           display={{ base: 'none', md: 'flex' }}
           color={colorBoton}
           justifyContent="space-around"

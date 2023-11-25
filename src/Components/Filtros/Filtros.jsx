@@ -46,7 +46,10 @@ const Filtros = ({ getFilter }) => {
                     getFilter("All")
                     activo1()
                 }}>
-                <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />
+                <Box display={{ md: 'none' }}>
+
+                    <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />
+                </Box>
                 <Text>All</Text>
             </Box>
             <Box
@@ -64,7 +67,9 @@ const Filtros = ({ getFilter }) => {
                     getFilter("Completed")
                     activo2()
                 }}>
-                <IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2} />
+                <Box display={{ md: 'none' }}>
+                    <IoMdCheckmarkCircle size={"30px"} mb="2px" strokeWidth={2} />
+                </Box>
                 <Text>Completed</Text>
             </Box>
             <Box
@@ -82,7 +87,10 @@ const Filtros = ({ getFilter }) => {
                     getFilter("Remaining")
                     activo3()
                 }}>
-                <PiCircleLight size="30px" mb="2px" strokeWidth={2} />
+                <Box display={{ md: 'none' }}>
+                    <PiCircleLight size="30px" mb="2px" strokeWidth={2} />
+
+                </Box>
                 <Text>Remaining</Text>
             </Box>
         </>

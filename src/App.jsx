@@ -94,40 +94,27 @@ function App() {
     <ThemeProvider theme={theme}>
       <ColorModeProvider>
         <CSSReset />
-        <Box w="100vw" h="100vh" display="flex" pos='relative'>
-          <Container
-            width={{ base: "500px", md: '90%' }}
-            bg={bg}
-            padding="0"
-            mt={{ md: '100px' }}
-            h='fit-content'
-            maxW='100vw'
-            borderRadius="2px"
-            // boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-            transition="box-shadow 0.3s ease-in-out"
-            pos='relative'
-          >
-            <Header onBuscar={handleBuscar} getFilter={getFilter} />
-            <TodoInput
-              addTodo={addTodo}
-              inputValue={buscar}
-              onHabilitarBusqueda={handlehabilitarBusqueda}
-              setTodos={setTodos}
-              auxList={auxList}
-            />
-            <Container h='15px' w='100%' bg={bg}></Container>
-            <TodoList
-              todos={todos}
-              handleSetComplete={handleSetComplete}
-              handleDelTask={handleDelTask}
-              filter={filter}
-              setTodos={setTodos}
-              lista={auxList}
-              setAuxList={setAuxList}
-            />
-            <Footer getFilter={getFilter} />
-          </Container>
-        </Box>
+        <Header onBuscar={handleBuscar} getFilter={getFilter} />
+        <TodoInput
+          addTodo={addTodo}
+          inputValue={buscar}
+          onHabilitarBusqueda={handlehabilitarBusqueda}
+          setTodos={setTodos}
+          auxList={auxList}
+        />
+        {/* <Container h='15px' w='100%' bg={bg}></Container> */}
+        <TodoList
+          todos={todos}
+          handleSetComplete={handleSetComplete}
+          handleDelTask={handleDelTask}
+          filter={filter}
+          setTodos={setTodos}
+          lista={auxList}
+          setAuxList={setAuxList}
+        />
+        <Footer getFilter={getFilter} />
+
+
       </ColorModeProvider>
     </ThemeProvider>
   );
