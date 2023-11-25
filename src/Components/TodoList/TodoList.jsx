@@ -9,7 +9,9 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter }) => {
   let auxList = [...todos]
 
   useEffect(() => {
-    if (filter == 'All') {
+    const cambioLista = () =>{
+
+      if (filter == 'All') {
       setAuxList(todos)
     }
     if (filter == 'Completed') {
@@ -21,6 +23,9 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter }) => {
       auxList = todos.filter((todo) => todo.state == false);
       setAuxList(auxList)
     }
+  }
+
+  cambioLista()
   }, [filter])
 
  
