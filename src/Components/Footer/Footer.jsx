@@ -9,7 +9,7 @@ const Footer = ({ getFilter }) => {
     const bg =
         colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
     const colorBoton =
-        colorMode === "dark" ? theme.colors.dark.colorBoton : theme.colors.light.colorBoton;
+        colorMode === "dark" ? theme.colors.dark.navBtn : theme.colors.light.navBtn;
     return (
         <Center
             bg={bg}

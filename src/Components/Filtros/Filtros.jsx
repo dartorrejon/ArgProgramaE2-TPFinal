@@ -18,15 +18,12 @@ const Filtros = ({ getFilter }) => {
 
     function activo1() {
         setActivo([true, false, false])
-        console.log(activo)
     }
     function activo2() {
         setActivo([false, true, false])
-        console.log(activo)
     }
     function activo3() {
         setActivo([false, false, true])
-        console.log(activo)
     }
 
     return (
@@ -39,15 +36,19 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[0] && `2px solid ${colorAzul}`}
+                borderTop={activo[0] && `4px solid ${colorAzul}`}
                 color={activo[0] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("All")
                     activo1()
                 }}>
-                <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />
-                <Text>All</Text>
+                <Box display={{ md: 'none' }}>
+
+                    <IoCheckmarkDoneSharp size="30px" mb="2px" strokeWidth={5} />
+                </Box>
+                <Text pointerEvents='none'>All</Text>
             </Box>
             <Box
                 mb="10px"
@@ -57,15 +58,18 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[1] && `2px solid ${colorAzul}`}
+                borderTop={activo[1] && `4px solid ${colorAzul}`}
                 color={activo[1] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("Completed")
                     activo2()
                 }}>
-                <IoMdCheckmarkCircle size="30px" mb="2px" strokeWidth={2} />
-                <Text>Completed</Text>
+                <Box display={{ md: 'none' }}>
+                    <IoMdCheckmarkCircle size={"30px"} mb="2px" strokeWidth={2} />
+                </Box>
+                <Text pointerEvents='none'>Completed</Text>
             </Box>
             <Box
                 mb="10px"
@@ -75,15 +79,19 @@ const Filtros = ({ getFilter }) => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                borderTop={activo[2] && `2px solid ${colorAzul}`}
+                borderTop={activo[2] && `4px solid ${colorAzul}`}
                 color={activo[2] && colorAzul}
-                _hover={{ borderTop: `2px solid ${colorAzul}` }}
+                _hover={{ borderTop: `4px solid ${colorAzul}` }}
+                cursor='pointer'
                 onClick={() => {
                     getFilter("Remaining")
                     activo3()
                 }}>
-                <PiCircleLight size="30px" mb="2px" strokeWidth={2} />
-                <Text>Remaining</Text>
+                <Box display={{ md: 'none' }}>
+                    <PiCircleLight size="30px" mb="2px" strokeWidth={2} />
+
+                </Box>
+                <Text pointerEvents='none'>Remaining</Text>
             </Box>
         </>
     )

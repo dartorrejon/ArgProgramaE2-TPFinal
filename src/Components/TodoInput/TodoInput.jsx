@@ -1,9 +1,7 @@
-import { Flex, Input, Text, Image, InputGroup, InputRightAddon, useTheme, useColorMode } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
-import plus from "/resourse/plus.jpg?url";
+import { Flex, Input, Text, InputGroup, InputRightAddon, useTheme, useColorMode } from "@chakra-ui/react";
 import { FaCirclePlus } from "react-icons/fa6"
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 
 
@@ -18,28 +16,23 @@ const TodoInput = ({ addTodo, onHabilitarBusqueda }) => {
 
     if (e.key.toLowerCase() == 'enter') {
       if (tarea == '') {
-        console.log("El campo task no puede estar vacio");
         return
       }
       addTodo(tarea);
       setTarea('');
-      // console.log(tarea);
     }
   }
 
-  /****************************************************************/
   //Esta funcion creo que deberia ir por el icono de  BUSQUEDA.
   const addTaskClick = (e) => {
     e.preventDefault()
     if (tarea == '') {
-      console.log("El campo task no puede estar vacio");
       return
     }
     addTodo(tarea);
     setTarea('');
-
   }
-  /****************************************************************/
+
 
 
   const handlehabilitarBusqueda = (e) => {
@@ -49,7 +42,6 @@ const TodoInput = ({ addTodo, onHabilitarBusqueda }) => {
 
   const { colorMode, toggleColorMode } = useColorMode();
   const theme = useTheme();
-
   const bg =
     colorMode === "dark" ? theme.colors.dark.bgTodo : theme.colors.light.bgTodo;
   const color =
@@ -61,19 +53,22 @@ const TodoInput = ({ addTodo, onHabilitarBusqueda }) => {
     <>
       <Flex
         flexDirection="row"
-
+        w={{ md: '60%' }}
+        mx={{ md: '20%' }}
+        mb={{ md: '15px' }}
+        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
       >
         <InputGroup width="100%">
           <Input
             type="text"
             placeholder="Add a task"
-            borderRadius="0"
+            borderRadius="2px"
+
             height="50px"
             onChange={cargarTarea}
             onBlur={handlehabilitarBusqueda}
             value={tarea}
             onKeyDown={addTask}
-
             bg={bg}
             color={color}
             _focus={{

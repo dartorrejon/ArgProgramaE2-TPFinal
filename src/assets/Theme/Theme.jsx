@@ -7,6 +7,7 @@ const colors = {
         color: "#e0e0e0",
         colorBoton: "#A3A2A2",
         lupa: "#4299E1",
+        navBtn: "#A3A2A2",
         azul: "#4299E1"
 
     },
@@ -16,6 +17,7 @@ const colors = {
         color: "#8b8b8b",
         colorBoton: "e0e0e0",
         lupa: "gray",
+        navBtn: "gray",
         azul: "#4299E1"
 
     }

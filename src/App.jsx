@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Box, Container, CSSReset, ThemeProvider, ColorModeProvider, useColorMode } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { CSSReset, ThemeProvider, ColorModeProvider, useColorMode, useEditable } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
@@ -44,12 +44,14 @@ function App() {
 
   const handleSetComplete = (id) => {
     const updatedList = todos.map((todo) => {
+
       if (todo.id === id) {
         return { ...todo, state: !todo.state };
       }
       return todo;
     });
     setTodos(updatedList);
+
 
     const updatedList2 = auxList.map((todo) => {
       if (todo.id === id) {
@@ -74,9 +76,8 @@ function App() {
   const handleBuscar = () => {
     if (buscar == "") {
       setTodos(auxList)
-      console.log('cargamos Lista AUx');
     } else {
-      const buscarList = todos.filter((todo) => todo.task.includes(buscar));
+      const buscarList = todos.filter((todo) => (todo.task).toLowerCase().includes(buscar.toLowerCase()));
       setTodos(buscarList);
     }
   };
@@ -94,40 +95,28 @@ function App() {
     <ThemeProvider theme={theme}>
       <ColorModeProvider>
         <CSSReset />
-        <Box w="100vw" h="100vh" display="flex" pos='relative'>
-          <Container
-            width={{ base: "500px", md: '90%' }}
-            bg={bg}
-            padding="0"
-            mt={{ md: '100px' }}
-            h='fit-content'
-            maxW='100vw'
-            borderRadius="2px"
-            // boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-            transition="box-shadow 0.3s ease-in-out"
-            pos='relative'
-          >
-            <Header onBuscar={handleBuscar} getFilter={getFilter} />
-            <TodoInput
-              addTodo={addTodo}
-              inputValue={buscar}
-              onHabilitarBusqueda={handlehabilitarBusqueda}
-              setTodos={setTodos}
-              auxList={auxList}
-            />
-            <Container h='15px' w='100%' bg={bg}></Container>
-            <TodoList
-              todos={todos}
-              handleSetComplete={handleSetComplete}
-              handleDelTask={handleDelTask}
-              filter={filter}
-              setTodos={setTodos}
-              lista={auxList}
-              setAuxList={setAuxList}
-            />
-            <Footer getFilter={getFilter} />
-          </Container>
-        </Box>
+
+
+        <Header onBuscar={handleBuscar} getFilter={getFilter} />
+        <TodoInput
+          addTodo={addTodo}
+          inputValue={buscar}
+          onHabilitarBusqueda={handlehabilitarBusqueda}
+          setTodos={setTodos}
+          auxList={auxList}
+        />
+        <TodoList
+          todos={todos}
+          handleSetComplete={handleSetComplete}
+          handleDelTask={handleDelTask}
+          filter={filter}
+          setTodos={setTodos}
+          lista={auxList}
+          setAuxList={setAuxList}
+        />
+        <Footer getFilter={getFilter} />
+
+
       </ColorModeProvider>
     </ThemeProvider>
   );

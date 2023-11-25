@@ -1,8 +1,7 @@
-import { Box, Flex, Input, InputGroup, InputRightElement, useColorMode, useTheme } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { DeleteIcon } from '@chakra-ui/icons';
+import { Box, useColorMode, useTheme } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 import Todo from '../Todo/Todo';
-import { theme } from '../../assets/Theme/Theme';
+
 
 
 const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, lista, setAuxList }) => {
@@ -18,7 +17,6 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, l
     const cambioLista = () => {
       if (filter == 'All') {
         setTodos(lista)
-        console.log('all:', lista)
       } else if (filter == 'Completed') {
         let aux2 = [...lista];
         setTodos(lista.filter((todo) => todo.state == true));
@@ -37,11 +35,13 @@ const TodoList = ({ todos, handleSetComplete, handleDelTask, filter, setTodos, l
     <Box
       h={{ base: 'calc(100vh - 11vh)', md: '70vh' }}
       pb={{ base: '115px', md: '0px' }}
-      // mt={{ md: '10px' }}
+      w={{ md: '60%' }}
+      mx={{ md: '20%' }}
       bg={bg}
       overflowY='auto'
-      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
 
+      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
+      borderRadius='2px'
     >
       {todos.map((todo) => {
         return (

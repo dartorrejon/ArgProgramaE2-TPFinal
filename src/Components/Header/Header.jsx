@@ -23,6 +23,8 @@ const Header = ({ onBuscar, getFilter }) => {
     colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
   const lupa =
     colorMode === "dark" ? theme.colors.dark.lupa : theme.colors.light.lupa;
+  const lupaInvertida =
+    colorMode === "dark" ? theme.colors.light.lupa : theme.colors.dark.lupa;
   const colorBoton =
     colorMode === "dark" ? theme.colors.dark.colorBoton : theme.colors.light.colorBoton;
 
@@ -31,31 +33,30 @@ const Header = ({ onBuscar, getFilter }) => {
       as="nav"
       display="flex"
       justifyContent="center"
-      minH="50px"
+      minH="10vh"
       px='40px'
       w='100%'
       alignItems="center"
       bg={bg}
       color={color}
-      pos={{ base: 'initial', md: 'fixed' }}
-      top={0}
-      left={0}
-
+      mb={{ md: '20px' }}
+      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
     >
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="space-around"
+        justifyContent="space-between"
         width="100%"
       >
         <IconButton
           icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
-          boxSize="27px"
-          fontSize={20}
+          boxSize={{ base: "27px", md: "25px", lg: "32px" }}
+          fontSize={{ base: "27px", md: "25px", lg: "32px" }}
           bg={bg}
-          color="grey"
+          color={lupa}
           onClick={toggleColorMode}
-        // mr="100px"
+          style={{ cursor: "pointer" }}
+          _hover={{ color: lupaInvertida }}
         />
         <Box>
           <Image src={logo} width="125px" />
@@ -65,7 +66,7 @@ const Header = ({ onBuscar, getFilter }) => {
           mt="-1px"
           w='500px'
           h='90%'
-          fontSize={15}
+          fontSize={{ base: '15px', md: '15px', lg: '20px' }}
           display={{ base: 'none', md: 'flex' }}
           color={colorBoton}
           justifyContent="space-around"
@@ -78,9 +79,9 @@ const Header = ({ onBuscar, getFilter }) => {
           <Search2Icon
             boxSize="27px"
             color={lupa}
-            // ml="100px"
             onClick={onBuscar}
             style={{ cursor: "pointer" }}
+            _hover={{ color: lupaInvertida }}
           />
         </Box>
       </Box>
