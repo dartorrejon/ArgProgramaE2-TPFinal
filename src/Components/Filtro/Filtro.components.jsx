@@ -19,11 +19,13 @@ const FiltersContainer = ({children})=>{
     return(
         <Flex 
         bg={bg}
-        mt="10px"
+        mt="-1px"
         color="grey"
         justifyContent="space-around"
-        borderTop="1px solid #e2e8f0"
-        paddingTop="10px">
+        border="0px solid #e2e8f0"
+        paddingTop="10px"
+        
+        >
             {children}
         </Flex>
     )

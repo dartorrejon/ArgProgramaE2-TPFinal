@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { Box, Container,CSSReset, ThemeProvider,ColorModeProvider } from "@chakra-ui/react";
+import { Box, Container,CSSReset, ThemeProvider,ColorModeProvider, useColorMode } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
@@ -22,8 +22,10 @@ function App() {
     { id: 8, task: "Implementar Chakra UI", state: true },
   ];
 
+
 const [todos, setTodos] = useState(datos);
 const [filter, setFilter] = useState('All');
+
 
   const addTodo = (task) => {
     const ultimaTarea = todos.length > 0 ? todos[todos.length - 1].id : 1;
@@ -47,6 +49,7 @@ const [filter, setFilter] = useState('All');
   };
   const handleDelTask = (id) => {
     const deleteList = todos.filter((todo) => todo.id !== id);
+    setAuxList(deleteList)
     setTodos(deleteList);
   };
 
@@ -63,10 +66,13 @@ const [filter, setFilter] = useState('All');
     if (buscar == "") {
       setPreFilter(preFilter)
       setRecarga(!recarga)
-      console.log('cambio el prefilter');
+        console.log('cambio el prefilter');
     } else {
+     
       setPreFilter([...todos])
+      setAuxList(preFilter)
       const buscarList = todos.filter((todo) => todo.task.includes(buscar));
+      
       setTodos(buscarList);
     }
   };
@@ -80,24 +86,20 @@ const [filter, setFilter] = useState('All');
     }
     recargarTask();
   },[recarga]);
-  /*************************** */
-  // },[buscar]);
-
-  // const habilitarBusqueda=(busqueda)=>{
-  //   console.log(busqueda);
-  //   if(busqueda==''){
-  //     setTodos(datos)
-  //   }else{
-  //     const buscarList = todos.filter((todo) => todo.task.includes(busqueda));
-  //     setTodos(buscarList);
-  //   }
-
-  // }
+/********************* */
 
    const getFilter = (filtro) => {
     setFilter(filtro);
+     setTodos(preFilter)
+    
     console.log(filter);
    }
+   const [lista, setAuxList] = useState([...todos])
+   const { colorMode, toggleColorMode } = useColorMode();
+   const bg =
+   colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
+   const color =
+   colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
 
   return (
     <ThemeProvider theme={theme}>
@@ -106,7 +108,8 @@ const [filter, setFilter] = useState('All');
         <Box  w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
         <Container
         width="500px"
-        bg='white'
+        h={1}
+        bg={bg}
         padding="0"
 
         borderRadius="2px"
@@ -124,6 +127,8 @@ const [filter, setFilter] = useState('All');
           handleSetComplete={handleSetComplete}
           handleDelTask={handleDelTask}
           filter={filter}
+          setTodos={setTodos}
+          lista={lista}
         />
 
         <TodoFilters getFilter={getFilter}/>
