@@ -1,13 +1,11 @@
-import { useState,useEffect } from "react";
-import { Box, Container,CSSReset, ThemeProvider,ColorModeProvider, useColorMode } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { CSSReset, ThemeProvider, ColorModeProvider, useColorMode, useEditable } from "@chakra-ui/react";
 import Header from "./Components/Header/Header";
 import TodoInput from "./Components/TodoInput/TodoInput";
 import TodoList from "./Components/TodoList/TodoList";
-import Todo from "./Components/Todo/Todo";
-import TodoFilters from "./Components/Filtro/TodoFilters";
 import { theme } from "./assets/Theme/Theme";
-import Rutas from "./Rutas";
-
+import Footer from "./Components/Footer/Footer";
+import './App.css'
 
 
 function App() {
@@ -23,8 +21,12 @@ function App() {
   ];
 
 
-const [todos, setTodos] = useState(datos);
-const [filter, setFilter] = useState('All');
+  const [todos, setTodos] = useState(datos);
+  const [auxList, setAuxList] = useState(datos)
+  const [filter, setFilter] = useState('All');
+  const [buscar, setBuscar] = useState("");
+  const { colorMode, toggleColorMode } = useColorMode();
+
 
 
   const addTodo = (task) => {
@@ -37,90 +39,71 @@ const [filter, setFilter] = useState('All');
     const todoList = [...todos];
     todoList.push(newTask);
     setTodos(todoList);
+    setAuxList(todoList) //Lista Auxiliar
   };
+
   const handleSetComplete = (id) => {
     const updatedList = todos.map((todo) => {
+
       if (todo.id === id) {
         return { ...todo, state: !todo.state };
       }
       return todo;
     });
     setTodos(updatedList);
+
+
+    const updatedList2 = auxList.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, state: !todo.state };
+      }
+      return todo;
+    });
+    setAuxList(updatedList2);
   };
+
   const handleDelTask = (id) => {
-    const deleteList = todos.filter((todo) => todo.id !== id);
+    const deleteList = auxList.filter((todo) => todo.id !== id);
+    const deleteList2 = todos.filter((todo) => todo.id !== id);
     setAuxList(deleteList)
-    setTodos(deleteList);
+    setTodos(deleteList2);
   };
 
-  /*************************** */
-
-  const [buscar, setBuscar] = useState("");
   const handlehabilitarBusqueda = (tarea) => {
     setBuscar(tarea);
   };
-  
-  const [preFilter,setPreFilter]=useState([...todos])
+
   const handleBuscar = () => {
-   
     if (buscar == "") {
-      setPreFilter(preFilter)
-      setRecarga(!recarga)
-        console.log('cambio el prefilter');
+      setTodos(auxList)
     } else {
-     
-      setPreFilter([...todos])
-      setAuxList(preFilter)
-      const buscarList = todos.filter((todo) => todo.task.includes(buscar));
-      
+      const buscarList = todos.filter((todo) => (todo.task).toLowerCase().includes(buscar.toLowerCase()));
       setTodos(buscarList);
     }
   };
 
-  /*************************** */
-  const[recarga,setRecarga]=useState(false)
-  useEffect(()=>{
-     console.log('prefilter:'+preFilter);
-    const recargarTask=()=>{
-      setTodos(preFilter);
-    }
-    recargarTask();
-  },[recarga]);
-/********************* */
-
-   const getFilter = (filtro) => {
+  const getFilter = (filtro) => {
     setFilter(filtro);
-     setTodos(preFilter)
-    
-    console.log(filter);
-   }
-   const [lista, setAuxList] = useState([...todos])
-   const { colorMode, toggleColorMode } = useColorMode();
-   const bg =
-   colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
-   const color =
-   colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
+  }
+
+  const bg =
+    colorMode === "dark" ? theme.colors.dark.bgHF : theme.colors.light.bgHF;
+  const color =
+    colorMode === "dark" ? theme.colors.dark.color : theme.colors.light.color;
 
   return (
     <ThemeProvider theme={theme}>
-       <ColorModeProvider>
-       <CSSReset />
-        <Box  w="100%" h="100vh" bg="gray.50" pt="50px" display="flex">
-        <Container
-        width="500px"
-        h={1}
-        bg={bg}
-        padding="0"
+      <ColorModeProvider>
+        <CSSReset />
 
-        borderRadius="2px"
-        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)"
-        transition="box-shadow 0.3s ease-in-out"
-      >
-        <Header onBuscar={handleBuscar} />
+
+        <Header onBuscar={handleBuscar} getFilter={getFilter} />
         <TodoInput
           addTodo={addTodo}
           inputValue={buscar}
           onHabilitarBusqueda={handlehabilitarBusqueda}
+          setTodos={setTodos}
+          auxList={auxList}
         />
         <TodoList
           todos={todos}
@@ -128,13 +111,13 @@ const [filter, setFilter] = useState('All');
           handleDelTask={handleDelTask}
           filter={filter}
           setTodos={setTodos}
-          lista={lista}
+          lista={auxList}
+          setAuxList={setAuxList}
         />
+        <Footer getFilter={getFilter} />
 
-        <TodoFilters getFilter={getFilter}/>
-      </Container>
-    </Box>
-    </ColorModeProvider>
+
+      </ColorModeProvider>
     </ThemeProvider>
   );
 }
