@@ -47,3 +47,11 @@ Todolist es un proyecto que proporciona una colección de herramientas y compone
 ## License
 
 Este proyecto está licenciado bajo la Licencia GPL-3.0. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+
+## Equipo
+
+
+| [<img src="https://avatars.githubusercontent.com/u/129612525?v=4" width=115><br><sub>Matias Eduardo SOBRERO</sub><br><sub>**matisobrero**</sub>](https://github.com/matisobrero) | [<img src="https://avatars.githubusercontent.com/u/75342389?v=4" width=115><br><sub>Dario Rodrigo TORREJON</sub><br><sub>**dartorrejon**</sub>]((https://github.com/dartorrejon)) |
+| :---: | :---: |
+[<img src="https://avatars.githubusercontent.com/u/6247587?v=4" width=115><br><sub>Omar Dario VIRILI</sub><br><sub>**odv144**</sub>](https://github.com/odv144) | [<img src="https://avatars.githubusercontent.com/u/39587296?v=4" width=115><br><sub>Fernando Octavio VIVEROS</sub><br><sub>**agros55**</sub>](https://github.com/agros55) | 
+
