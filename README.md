@@ -36,13 +36,14 @@ Todolist es un proyecto que proporciona una colección de herramientas y compone
 ![ejecucion.jpg](https://i.postimg.cc/3xnNSLbZ/ejecucion.jpg)
 
 ## Capturas 
-Diseño versión desktop
+### Diseño versión desktop
 ![captura-aplicacion.jpg](https://i.postimg.cc/PNGTJ7r1/captura-aplicacion.jpg)
 
-Diseño versión movil
+### Diseño versión movil
 ![Imagen-de-Whats-App-2023-11-25-a-las-19-48-54-aed395bf.jpg](https://i.postimg.cc/DyvjGgRT/Imagen-de-Whats-App-2023-11-25-a-las-19-48-54-aed395bf.jpg)
 
 ![Imagen-de-Whats-App-2023-11-25-a-las-20-03-57-a8433266.jpg](https://i.postimg.cc/5tjLWPjf/Imagen-de-Whats-App-2023-11-25-a-las-20-03-57-a8433266.jpg)
+
 ## License
 
 Este proyecto está licenciado bajo la Licencia GPL-3.0. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
